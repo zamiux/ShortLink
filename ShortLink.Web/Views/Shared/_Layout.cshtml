@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Short Link</title>
+
+    <partial name="_HeaderRefrence" />
+</head>
+
+<body class="my-login-page">
+
+    <header class="header-section" style="background-color: #2c18b4">
+        <div class="container">
+            <div class="header-wrapper">
+                <ul class="menu">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li><a>@User.Identity.Name</a></li>
+                        <li><a asp-controller="Account" asp-action="Logout">LogOut</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="LoginUser">Login</a></li>
+                        <li><a asp-controller="Account" asp-action="RegisterUser">Register</a></li>
+
+                    }
+                </ul>
+                <div class="header-bar d-lg-none mr-sm-3">
+                    
+                </div>
+                <div class="header-right"></div>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer-section padding-top">
+        <div class="footer-bg bg_img"></div>
+        <div class="footer-bg d-md-block d-none"><img src="/site/assets/images/footer/wave.png" alt="footer"></div>
+        <div class="container" style="background-image: url(site/assets/images/footer/footer-bg.jpg)">
+            <div class="footer-bottom">
+                <div class="footer-bottom-area">
+                    <div class="left cl-white">
+                        <p>&copy; Copyright 2020 | <a href="toplearn.com">Short Link</a></p>
+                    </div>
+                    <ul class="social-icons"></ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <partial name="_FooterRefrence" />
+    <partial name="_Message" />
+    @RenderSection("scripts",false)
+    
+</body>
+
+</html>

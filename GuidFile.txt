@@ -1,0 +1,28 @@
+Clean Code: 
+Clean Code Project include 5 Layers: 
+
+1=Application:
+
+2-Domain:
+
+3-Infra.Data:
+	*Microsoft.EntityFrameworkCore
+	*Microsoft.EntityFrameworkCore.SqlServer
+	*Microsoft.EntityFrameworkCore.Design
+	*Microsoft.EntityFrameworkCore.Tools
+
+4-Infta.IoC:
+nuget:
+	*Microsoft.Extensions.DependencyInjection
+
+
+5-Presentation:
+	-Add refrences : Infta.IoC
+	-Add refrences : Infta.Data
+	-Add refrences : Domain
+	-Add refrences : Application
+
+	*Microsoft.EntityFrameworkCore
+	*Microsoft.EntityFrameworkCore.SqlServer
+	*Microsoft.EntityFrameworkCore.Design
+	*Microsoft.EntityFrameworkCore.Tools
