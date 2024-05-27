@@ -15,6 +15,8 @@ namespace ShortLink.Domain.Interfaces
         Task AddDevive(Device device);
         Task AddBrower(Brower brower);
         Task<ShortUrl> FindUrlByToken(string token);
+
+        Task AddRequestURL(RequestUrl url);
         #endregion
         Task SaveChange();
     }

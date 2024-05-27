@@ -46,6 +46,11 @@ namespace ShortLink.Infra.Data.Repository
         {
             return await _context.ShortUrls.AsQueryable().SingleOrDefaultAsync(u => u.Token == token);
         }
+
+        public async Task AddRequestURL(RequestUrl url)
+        {
+            await _context.RequestUrls.AddAsync(url);
+        }
         #endregion
 
         #region dispose & save change
@@ -58,6 +63,8 @@ namespace ShortLink.Infra.Data.Repository
         {
             await _context.SaveChangesAsync();
         }
+
+        
         #endregion
     }
 }

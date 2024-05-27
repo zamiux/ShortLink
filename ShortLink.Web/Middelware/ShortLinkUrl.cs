@@ -32,6 +32,10 @@ namespace ShortLink.Web.Middelware
                 // get token    
                 var token = httpContext.Request.Path.ToString().Substring(1);
                 var shortUrl = await _linkService.FindUrlByToken(token);
+
+                //submit log user request for url
+                await _linkService.AddRequestUrl(token);
+
                 if (shortUrl != null)
                 {
                     httpContext.Response.Redirect(shortUrl.OrginalUrl.ToString());

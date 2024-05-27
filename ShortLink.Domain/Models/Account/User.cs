@@ -33,5 +33,8 @@ namespace ShortLink.Domain.Models.Account
         [Display(Name = "User is Block / Non Block")]
         public bool IsUserBlock { get; set; } = false;
 
+        [Display(Name = "User is Admin / Non Admin")]
+        public bool IsAdmin { get; set; } = false;
+
     }
 }

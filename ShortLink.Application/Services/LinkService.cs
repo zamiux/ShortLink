@@ -84,6 +84,23 @@ namespace ShortLink.Application.Services
         {
             return await _linkRepository.FindUrlByToken(token);
         }
+
+        public async Task AddRequestUrl(string token)
+        {
+            var short_url = _linkRepository.FindUrlByToken(token);
+            var new_request_url = new RequestUrl()
+            {
+                CreateDate = DateTime.Now,
+                ShortUrlId = short_url.Id,
+                RequestDataTime = DateTime.Now,
+                IsDelete = false
+
+            };
+            
+            await _linkRepository.AddRequestURL(new_request_url);
+            await _linkRepository.SaveChange();
+
+        }
         #endregion
     }
 }

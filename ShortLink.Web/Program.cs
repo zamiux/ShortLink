@@ -6,6 +6,7 @@ using ShortLink.Infra.IoC;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using ShortLink.Web.Middelware;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +69,26 @@ app.UseRouting();
 app.UseAuthentication();
 #endregion
 app.UseAuthorization();
+
+#region Special Middleware Access , must be after Authoruzation
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/admin"))
+    {
+        // check user is logined
+        if (!context.User.Identity.IsAuthenticated)
+        {
+            context.Response.Redirect("/login");
+        }
+        else if(!bool.Parse(context.User.FindFirstValue("isAdmin")))
+        {
+            context.Response.Redirect("/login");
+        }
+        
+    }
+    await next.Invoke();
+});
+#endregion
 
 
 app.MapControllerRoute(

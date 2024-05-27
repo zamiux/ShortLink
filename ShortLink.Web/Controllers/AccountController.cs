@@ -71,7 +71,8 @@ namespace ShortLink.Web.Controllers
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Name,user.Mobile),
-                            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())
+                            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                            new Claim("isAdmin",user.IsAdmin.ToString())
                         };
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var principle = new ClaimsPrincipal(identity);

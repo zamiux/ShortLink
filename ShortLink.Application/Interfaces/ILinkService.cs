@@ -15,6 +15,7 @@ namespace ShortLink.Application.Interfaces
         Task<UrlRequestResult> AddLink(ShortUrl url);
         Task AddUserAgent(string userAgnet);
         Task<ShortUrl> FindUrlByToken(string token);
+        Task AddRequestUrl(string token);
         #endregion
     }
 }

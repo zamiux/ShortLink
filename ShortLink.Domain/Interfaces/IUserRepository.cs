@@ -14,5 +14,6 @@ namespace ShortLink.Domain.Interfaces
 
         Task<bool> CheckEmailIsExist(string mobile);
         Task<User> GetUserByMobile(string mobile);
+        
     }
 }
